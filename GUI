@@ -1,0 +1,146 @@
+package simulatorgui;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.*;
+import java.io.*;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+public class SimulatorGUI extends JPanel{
+        public  JFrame mainFrame;
+	      private  JRadioButton track1, track2, track3, track4, track5;
+        private JRadioButton normal, slight, mild, moderate, moderatelySevere, severe, custom;
+	      private  JPanel leftPanel, rightPanel;
+	      private  JButton play;
+	      private JLabel audioLab, lossLab;
+        private ButtonGroup audioG, lossG;
+        
+        
+        
+        
+        public SimulatorGUI()
+        {
+        mainFrame = new JFrame("Hearing Loss Simulator");
+        rightPanel = new JPanel(new GridBagLayout());
+        leftPanel = new JPanel(new GridBagLayout());
+        
+        play = new JButton("Play Track");
+        audioLab = new JLabel("Select track:");
+        lossLab = new JLabel("Select degree of loss to simulate: ");
+       
+        //Left Side of the Panel, where the Audio Selection is
+        audioG = new ButtonGroup();
+        track1 = new JRadioButton("Track 1");
+        track2 = new JRadioButton("Track 2");
+        track3 = new JRadioButton("Track 3");
+        track4 = new JRadioButton("Track 4");
+        track5 = new JRadioButton("Track 5");
+        
+        track1.setSelected(true);
+        
+        audioG.add(track1);
+        audioG.add(track2);
+        audioG.add(track3);
+        audioG.add(track4);
+        audioG.add(track5);
+        //End Audio Select Side
+        
+        //Right Side of Panel where the type of Hearing Loss simulated is chosen
+        lossG = new ButtonGroup();
+        normal = new JRadioButton("Normal Hearing");
+        slight = new JRadioButton("Slight Hearing Loss");
+        mild = new JRadioButton("Mild Hearing Loss");
+        moderate = new JRadioButton("Moderate Hearing Loss");
+        moderatelySevere = new JRadioButton("Moderately Severe Hearing Loss");
+        severe = new JRadioButton("Severe Hearing Loss");
+        custom = new JRadioButton("Custom Filter");
+        
+        normal.setSelected(true);
+        
+        lossG.add(normal);
+        lossG.add(slight);
+        lossG.add(mild);
+        lossG.add(moderate);
+        lossG.add(moderatelySevere);
+        lossG.add(severe);
+        lossG.add(custom);
+        //End Loss Select Side
+        
+        //Creating the frame
+        GridBagConstraints c = new GridBagConstraints();
+        
+        mainFrame.setVisible(true);
+        mainFrame.setSize(730,450);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setLayout(new GridLayout(1,2,3,3));
+        
+        //Adding components to Frame
+        c.insets = new Insets(10, 10, 10, 10); 
+        c.gridx = 1;
+        c.gridy = 0;
+        leftPanel.add(audioLab, c);
+        
+        
+        c.gridx = 1;
+        c.gridy = 1;
+        leftPanel.add(track1, c);
+        
+        c.gridx = 1;
+        c.gridy = 2;
+        leftPanel.add(track2, c);
+        
+        c.gridx = 1;
+        c.gridy = 3;
+        leftPanel.add(track3, c);
+        
+        c.gridx = 1;
+        c.gridy = 4;
+        leftPanel.add(track4, c);
+        
+        c.gridx = 1;
+        c.gridy = 5;
+        leftPanel.add(track5, c);
+        
+        c.gridx = 1;
+        c.gridy = 6;
+        leftPanel.add(play, c);
+        
+        c.gridx = 2;
+        c.gridy = 0;
+        leftPanel.add(lossLab, c);
+        
+        c.gridx = 2;
+        c.gridy = 1;
+        leftPanel.add(normal, c);
+        
+        c.gridx = 2;
+        c.gridy = 2;
+        leftPanel.add(mild, c);
+        
+        c.gridx = 2;
+        c.gridy = 3;
+        leftPanel.add(moderate, c);
+        
+        c.gridx = 2;
+        c.gridy = 4;
+        leftPanel.add(severe, c);
+        
+        c.gridx = 2;
+        c.gridy = 5;
+        leftPanel.add(custom,c);
+        
+        mainFrame.add(leftPanel);
+          
+        }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        new SimulatorGUI();
+    }
+    
+}
